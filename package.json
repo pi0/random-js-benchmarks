@@ -1,0 +1,19 @@
+{
+  "name": "js-benchmarks",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "format": "prettier --write .",
+    "bench": "sudo node ./bench.mjs",
+    "bench:md": "sudo RENDER_MARKDOWN=1 node ./bench.mjs"
+  },
+  "devDependencies": {
+    "@mitata/counters": "^0.0.8",
+    "@types/node": "^24.8.1",
+    "automd": "^0.4.2",
+    "mitata": "^1.0.34",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.3"
+  }
+}
