@@ -19,5 +19,5 @@ const bench = async (title, cmd) => {
 };
 
 await bench("Node.js", `node --expose-gc ./benchs/${benchName}.mjs`);
-await bench("bun", `bun ./benchs/${benchName}.mjs`);
 await bench("Deno", `deno run -A ./benchs/${benchName}.mjs`);
+await bench("bun", `bun ./benchs/${benchName}.mjs`);

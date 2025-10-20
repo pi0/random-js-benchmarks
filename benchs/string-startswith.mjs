@@ -1,11 +1,10 @@
-import { do_not_optimize } from "mitata";
 import { runBenchmarks } from "./_common.mjs";
 
 const implementations = [
-  (str) => do_not_optimize(str.startsWith(":")),
-  (str) => do_not_optimize(str[0] === ":"),
-  (str) => do_not_optimize(str.charCodeAt(0) === 58),
-  (str) => do_not_optimize(str.codePointAt(0) === 58),
+  (str) => str.startsWith(":"),
+  (str) => str[0] === ":",
+  (str) => str.charCodeAt(0) === 58,
+  (str) => str.codePointAt(0) === 58,
 ];
 
 const inputs = [":test", "test"];
