@@ -20,4 +20,10 @@ const implementations = [
   (str) => do_not_optimize(str.codePointAt(0) === 58),
 ];
 
-await runBenchmarks(implementations, inputs);
+const tests = [
+  [":with", true],
+  ["without", false],
+  ["", false],
+];
+
+await runBenchmarks(implementations, inputs, tests);
