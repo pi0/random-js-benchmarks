@@ -12,7 +12,7 @@ Run with `pnpm bench <name>`
 <summary>Node.js</summary>
 
 ```
-clk: ~4.35 GHz
+clk: ~3.91 GHz
 cpu: Apple M4 Pro
 runtime: node 24.10.0 (arm64-darwin)
 
@@ -20,29 +20,29 @@ benchmark                   avg (min … max) p75 / p99    (min … top 1%)
 ------------------------------------------- -------------------------------
 • without colon
 ------------------------------------------- -------------------------------
-str.charCodeAt(0) === 58       2.22 ns/iter   2.27 ns   2.92 ns ▄▂▂█▁▁▂▁▁▁▁
-str[0] === ":"                 4.72 ns/iter   4.87 ns   6.23 ns ▅▂▁█▁▁▁▁▁▁▁
-str.startsWith(":")            4.42 ns/iter   4.56 ns   5.82 ns ▅▂▁█▁▁▁▁▁▁▁
-str.codePointAt(0) === 58      4.35 ns/iter   4.48 ns   5.74 ns ▅▁▁█▁▁▁▁▁▁▁
+str.codePointAt(0) === 58      9.94 ns/iter  10.02 ns  11.69 ns ▂▁▁▁█▁▁▁▁▁▁
+str.charCodeAt(0) === 58      22.22 ns/iter  22.40 ns  25.10 ns ▂▁▂▂█▂▁▁▁▁▁
+str[0] === ":"                24.22 ns/iter  24.45 ns  27.47 ns ▁▂▂▂▃█▂▁▁▁▁
+str.startsWith(":")           22.51 ns/iter  22.64 ns  25.34 ns ▁▁▂▂▂█▂▁▁▁▁
 
 summary
-  str.charCodeAt(0) === 58
-   1.96x faster than str.codePointAt(0) === 58
-   1.99x faster than str.startsWith(":")
-   2.13x faster than str[0] === ":"
+  str.codePointAt(0) === 58
+   2.24x faster than str.charCodeAt(0) === 58
+   2.27x faster than str.startsWith(":")
+   2.44x faster than str[0] === ":"
 
 • with colon
 ------------------------------------------- -------------------------------
-str.charCodeAt(0) === 58       4.36 ns/iter   4.47 ns   5.71 ns ▄▁▁█▁▁▁▁▁▁▁
-str[0] === ":"                 4.71 ns/iter   4.85 ns   6.17 ns ▅▁▁█▁▁▁▁▁▁▁
-str.startsWith(":")            4.41 ns/iter   4.53 ns   5.79 ns ▄▂▁█▁▁▁▁▁▁▁
-str.codePointAt(0) === 58      4.36 ns/iter   4.46 ns   5.72 ns ▄▁▁█▁▁▁▁▁▁▁
+str.codePointAt(0) === 58     22.20 ns/iter  22.63 ns  24.81 ns ▁▁▂▂▂█▅▁▁▁▁
+str.charCodeAt(0) === 58      22.27 ns/iter  22.42 ns  24.89 ns ▁▁▂▂▂█▁▁▁▁▁
+str[0] === ":"                24.85 ns/iter  24.64 ns  30.38 ns ▁▂▂█▂▁▁▁▁▁▁
+str.startsWith(":")           22.85 ns/iter  23.50 ns  26.08 ns ▁▁▂▂█▂▅▁▁▁▁
 
 summary
   str.codePointAt(0) === 58
    1x faster than str.charCodeAt(0) === 58
-   1.01x faster than str.startsWith(":")
-   1.08x faster than str[0] === ":"
+   1.03x faster than str.startsWith(":")
+   1.12x faster than str[0] === ":"
 ```
 
 </details>
@@ -51,7 +51,7 @@ summary
 <summary>bun</summary>
 
 ```
-clk: ~4.29 GHz
+clk: ~4.32 GHz
 cpu: Apple M4 Pro
 runtime: bun 1.3.0 (arm64-darwin)
 
@@ -59,29 +59,29 @@ benchmark                   avg (min … max) p75 / p99    (min … top 1%)
 ------------------------------------------- -------------------------------
 • without colon
 ------------------------------------------- -------------------------------
-str.codePointAt(0) === 58    715.48 ps/iter 742.68 ps 956.30 ps ▃█▁▆▁▁▁▁▁▁▁
-str.charCodeAt(0) === 58       1.94 ns/iter   1.95 ns   3.60 ns ▆█▃▁▁▁▁▁▁▁▁
-str.startsWith(":")           12.26 ns/iter  11.52 ns  26.32 ns ▅█▂▁▁▁▁▂▂▂▁
-str[0] === ":"                 2.36 ns/iter   2.15 ns   4.56 ns ▅█▁▁▁▁▁▂▁▁▁
+str[0] === ":"                 7.45 ns/iter   7.56 ns  10.29 ns ▂▂█▅▁▁▁▁▁▁▁
+str.startsWith(":")           41.87 ns/iter  42.96 ns  47.42 ns ▁▁▁▂▆█▅▄▁▁▁
+str.charCodeAt(0) === 58      11.89 ns/iter  12.55 ns  16.34 ns ▁▂▄▅▅█▂▁▁▁▁
+str.codePointAt(0) === 58     12.40 ns/iter  12.77 ns  17.61 ns ▁▂▃▄█▃▂▁▁▁▁
 
 summary
-  str.codePointAt(0) === 58
-   2.71x faster than str.charCodeAt(0) === 58
-   3.29x faster than str[0] === ":"
-   17.13x faster than str.startsWith(":")
+  str[0] === ":"
+   1.6x faster than str.charCodeAt(0) === 58
+   1.66x faster than str.codePointAt(0) === 58
+   5.62x faster than str.startsWith(":")
 
 • with colon
 ------------------------------------------- -------------------------------
-str.codePointAt(0) === 58      4.70 ns/iter   5.39 ns   6.74 ns ▄▄▁▅█▅▆▅▁▁▁
-str.charCodeAt(0) === 58       3.63 ns/iter   3.77 ns   4.82 ns ▆▂▁█▁▁▁▁▁▁▁
-str.startsWith(":")           10.32 ns/iter  10.75 ns  12.65 ns ▁▃▅▃▄█▁▁▁▁▁
-str[0] === ":"                 6.66 ns/iter   6.88 ns   8.37 ns ▂▆▂▃█▂▁▁▁▁▁
+str[0] === ":"                19.11 ns/iter  19.26 ns  22.09 ns ▁▂▂▂█▂▁▁▁▁▁
+str.startsWith(":")           55.04 ns/iter  58.40 ns  61.88 ns ▁▁▂▇█▂▃▅▅▄▂
+str.charCodeAt(0) === 58      22.63 ns/iter  23.18 ns  25.47 ns ▂▂▃▃▃█▅▂▁▁▁
+str.codePointAt(0) === 58     23.45 ns/iter  24.36 ns  26.63 ns ▁▂▃▄▆▃█▅▁▁▁
 
 summary
-  str.charCodeAt(0) === 58
-   1.29x faster than str.codePointAt(0) === 58
-   1.83x faster than str[0] === ":"
-   2.84x faster than str.startsWith(":")
+  str[0] === ":"
+   1.18x faster than str.charCodeAt(0) === 58
+   1.23x faster than str.codePointAt(0) === 58
+   2.88x faster than str.startsWith(":")
 ```
 
 </details>
@@ -90,7 +90,7 @@ summary
 <summary>Deno</summary>
 
 ```
-clk: ~4.20 GHz
+clk: ~4.21 GHz
 cpu: Apple M4 Pro
 runtime: deno 2.5.4 (aarch64-apple-darwin)
 
@@ -98,28 +98,28 @@ benchmark                   avg (min … max) p75 / p99    (min … top 1%)
 ------------------------------------------- -------------------------------
 • without colon
 ------------------------------------------- -------------------------------
-str[0] === ":"                 2.63 ns/iter   2.68 ns   3.49 ns ▄▁▁█▁▁▁▁▁▁▁
-str.startsWith(":")            4.34 ns/iter   4.40 ns   5.64 ns ▃▁▁█▁▁▁▁▁▁▁
-str.charCodeAt(0) === 58       4.37 ns/iter   4.44 ns   5.69 ns ▃▁▁█▁▁▁▁▁▁▁
-str.codePointAt(0) === 58      4.37 ns/iter   4.45 ns   5.75 ns ▃▁▁█▁▁▁▁▁▁▁
+str.charCodeAt(0) === 58      10.03 ns/iter  10.13 ns  12.34 ns ▁▂▃▇█▄▁▁▃▁▁
+str[0] === ":"                24.19 ns/iter  24.17 ns  26.63 ns ▁▁▁▁▁█▁▁▁▁▁
+str.startsWith(":")           22.47 ns/iter  22.44 ns  25.56 ns ▁▁▁▁█▁▁▁▁▁▁
+str.codePointAt(0) === 58     21.99 ns/iter  21.98 ns  24.61 ns ▁▁▁▁▁█▁▁▁▁▁
 
 summary
-  str[0] === ":"
-   1.65x faster than str.startsWith(":")
-   1.66x faster than str.charCodeAt(0) === 58
-   1.67x faster than str.codePointAt(0) === 58
+  str.charCodeAt(0) === 58
+   2.19x faster than str.codePointAt(0) === 58
+   2.24x faster than str.startsWith(":")
+   2.41x faster than str[0] === ":"
 
 • with colon
 ------------------------------------------- -------------------------------
-str[0] === ":"                 4.71 ns/iter   4.78 ns   6.10 ns ▃▁▁█▁▁▁▁▁▁▁
-str.startsWith(":")            4.40 ns/iter   4.48 ns   5.72 ns ▃▁▁█▁▁▁▁▁▁▁
-str.charCodeAt(0) === 58       4.36 ns/iter   4.41 ns   5.66 ns ▃▁▁█▁▁▁▁▁▁▁
-str.codePointAt(0) === 58      4.33 ns/iter   4.39 ns   5.66 ns ▃▁▁█▁▁▁▁▁▁▁
+str.charCodeAt(0) === 58      22.20 ns/iter  22.17 ns  24.55 ns ▁▁▁▁▁█▂▂▁▁▁
+str[0] === ":"                24.07 ns/iter  24.11 ns  26.46 ns ▁▁▁▁▁█▁▂▁▁▁
+str.startsWith(":")           22.09 ns/iter  22.10 ns  24.65 ns ▁▁▁▁▁█▂▁▁▁▁
+str.codePointAt(0) === 58     22.26 ns/iter  22.58 ns  24.99 ns ▁▁▁▁█▃▆▁▁▁▁
 
 summary
-  str.codePointAt(0) === 58
+  str.startsWith(":")
    1.01x faster than str.charCodeAt(0) === 58
-   1.02x faster than str.startsWith(":")
+   1.01x faster than str.codePointAt(0) === 58
    1.09x faster than str[0] === ":"
 ```
 

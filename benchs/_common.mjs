@@ -34,7 +34,7 @@ export async function runBenchmarks(implementations, inputs, tests) {
         const name = impl.name || fnCode.replace(/^\(.+\) => /, "");
         bench(name, () => {
           for (const value of input.values) {
-            return impl.fn(value);
+            impl.fn(value);
           }
         });
       }
