@@ -1,17 +1,5 @@
-import { runBenchmarks, do_not_optimize } from "./_common.mjs";
-
-const samples = ["hello", "world", "test", "another", "final"];
-
-const inputs = [
-  {
-    name: "without colon",
-    values: samples,
-  },
-  {
-    name: "with colon",
-    values: samples.map((s) => `:${s}`),
-  },
-];
+import { do_not_optimize } from "mitata";
+import { runBenchmarks } from "./_common.mjs";
 
 const implementations = [
   (str) => do_not_optimize(str.startsWith(":")),
@@ -20,9 +8,11 @@ const implementations = [
   (str) => do_not_optimize(str.codePointAt(0) === 58),
 ];
 
+const inputs = [":test", "test"];
+
 const tests = [
-  [":with", true],
-  ["without", false],
+  [":test", true],
+  ["test", false],
   ["", false],
 ];
 
